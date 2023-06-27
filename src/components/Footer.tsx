@@ -1,4 +1,4 @@
-import socialMediaData from "@/data/socialMediaLinks";
+import socialMediaData, { SocialMedia } from "@/data/socialMediaLinks";
 import React from "react";
 
 const Footer: React.FC = () => {
