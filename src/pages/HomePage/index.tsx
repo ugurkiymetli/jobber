@@ -51,9 +51,6 @@ const HomePage: React.FC = () => {
           )}
         </>
       )}
-      {/* <div>
-        <Footer />
-      </div> */}
     </div>
   );
 };
