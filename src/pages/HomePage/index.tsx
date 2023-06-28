@@ -1,12 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import { toast } from "react-toastify";
+
 import Footer from "@/components/Footer";
 import GuessForm from "@/components/GuessForm";
 import ThinkingAnimation from "@/components/ThinkingAnimation";
 import jobs from "@/data/jobs";
 import { getRandomTimeoutInSeconds } from "@/utils/utils";
-import { useState } from "react";
-import { toast } from "react-toastify";
 
 const HomePage: React.FC = () => {
   const [guessedJob, setGuessedJob] = useState<string | null>(null);

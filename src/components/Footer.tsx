@@ -1,6 +1,7 @@
 "use client";
-import socialMediaData, { SocialMedia } from "@/data/socialMediaLinks";
 import React from "react";
+
+import socialMediaData, { SocialMedia } from "@/data/socialMediaLinks";
 
 const Footer: React.FC = () => {
   return (
