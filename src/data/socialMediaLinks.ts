@@ -21,4 +21,5 @@ const socialMediaData: SocialMedia[] = [
   // Add more social media objects as needed
 ];
 
+export const website:string = "http://ugurkiymetli.com/";
 export default socialMediaData;
