@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import Footer from "@/components/Footer";
 import GuessForm from "@/components/GuessForm";
 import ThinkingAnimation from "@/components/ThinkingAnimation";
 import jobs from "@/data/jobs";
@@ -12,6 +11,7 @@ import { getRandomTimeoutInSeconds } from "@/utils/utils";
 const HomePage: React.FC = () => {
   const [guessedJob, setGuessedJob] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showDiv, setShowDiv] = useState(true);
 
   const handleGuess = (name: string, surname: string) => {
     if (name === "" || surname === "") {
@@ -26,11 +26,13 @@ const HomePage: React.FC = () => {
       setIsLoading(false);
     }, getRandomTimeoutInSeconds());
   };
+  const descrtiptionText = `Guess your future job by entering your name and surname, and click the
+  "Guess" button. We will show you a "thinking" animation and randomly
+  select a job from our list. Good luck and have fun!`;
 
-  const handleReset = () => {
-    setGuessedJob(null);
+  const handleClose = () => {
+    setShowDiv(false);
   };
-
   return (
     <div>
       {isLoading ? (
@@ -43,14 +45,57 @@ const HomePage: React.FC = () => {
                 You might be a<span className="font-bold"> {guessedJob}</span>!
               </p>
               <button
-                onClick={handleReset}
+                onClick={() => setGuessedJob(null)}
                 className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
               >
                 Play Again
               </button>
             </>
           ) : (
-            <GuessForm onGuess={handleGuess} />
+            <>
+              {showDiv ? (
+                <div className="flex justify-center items-center">
+                  <div className="max-w-md w-full sm:w-auto bg-white rounded-lg m-4 p-6 shadow-lg relative">
+                    <button
+                      className="bg-gray-600 rounded-lg absolute top-0 right-0 m-1 p-2 w-6 h-6 flex items-center justify-center"
+                      onClick={handleClose}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="h-full w-full transform scale-150"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                      </svg>
+                    </button>
+                    <p className="text-base italic text-base text-black mb-1">
+                      How to play?
+                    </p>
+                    <p className="text-sm text-black">{descrtiptionText}</p>
+                  </div>
+                </div>
+              ) : null}
+              {/* <div className="flex justify-center items-center">
+                <div className="max-w-md w-full sm:w-auto bg-white rounded-lg m-4 p-6 shadow-lg">
+                  <p className="text-sm sm:text-base text-black">
+                    {descrtiptionText}
+                  </p>
+                </div>
+              </div> */}
+              {/* <div className="flex justify-center items-center">
+                <div className="max-w-md bg-white rounded-lg m-4 p-6 shadow-lg">
+                  <p className="text-sm text-black">{descrtiptionText}</p>
+                </div>
+              </div> */}
+              <GuessForm onGuess={handleGuess} />
+            </>
           )}
         </>
       )}

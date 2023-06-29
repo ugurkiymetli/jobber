@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface GuessFormProps {
   onGuess: (name: string, surname: string) => void;
 }
 
 const GuessForm: React.FC<GuessFormProps> = ({ onGuess }) => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
