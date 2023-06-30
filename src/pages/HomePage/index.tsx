@@ -82,18 +82,6 @@ const HomePage: React.FC = () => {
                   </div>
                 </div>
               ) : null}
-              {/* <div className="flex justify-center items-center">
-                <div className="max-w-md w-full sm:w-auto bg-white rounded-lg m-4 p-6 shadow-lg">
-                  <p className="text-sm sm:text-base text-black">
-                    {descrtiptionText}
-                  </p>
-                </div>
-              </div> */}
-              {/* <div className="flex justify-center items-center">
-                <div className="max-w-md bg-white rounded-lg m-4 p-6 shadow-lg">
-                  <p className="text-sm text-black">{descrtiptionText}</p>
-                </div>
-              </div> */}
               <GuessForm onGuess={handleGuess} />
             </>
           )}
